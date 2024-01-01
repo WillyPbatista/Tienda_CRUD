@@ -250,3 +250,4 @@ C:\Users\Willy\Desktop\pureba csharp\Tienda_CURD\bin\Debug\net8.0\runtimes\win\l
 C:\Users\Willy\Desktop\pureba csharp\Tienda_CURD\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\Willy\Desktop\pureba csharp\Tienda_CURD\obj\Debug\net8.0\Tienda_CURD.csproj.AssemblyReference.cache
 C:\Users\Willy\Desktop\pureba csharp\Tienda_CURD\obj\Debug\net8.0\Tienda_CURD.csproj.CopyComplete
+C:\Users\Willy\Desktop\pureba csharp\Tienda_CURD\obj\Debug\net8.0\Tienda_CURD.sourcelink.json

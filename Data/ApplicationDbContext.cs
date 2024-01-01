@@ -24,6 +24,6 @@ namespace Tienda_CURD.Data
             .HasForeignKey(d=>d.OrderID)
             .OnDelete(DeleteBehavior.Cascade);
         }
-        public DbSet<Tienda_CURD.Product> Product { get; set; } = default!;
+        public DbSet<Product> Product { get; set; } = default!;
     }
 }
