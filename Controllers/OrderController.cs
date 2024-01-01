@@ -127,6 +127,77 @@ namespace Tienda_CURD.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult EditDetails(int id)
+        {
+            var detail =  _context.OrderDetails.Find(id);
+
+            if(detail ==null)
+                return NotFound();
+
+            var product = _context.Product.FirstOrDefault(p => p.productID == detail.ProductID);
+
+            if(product == null)
+                return NotFound();
+
+            ViewBag.productPrice = product.price;
+
+            ViewBag.products = _context.Product.ToList();
+
+            return View(detail);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditDetails(int id, OrderDetails orderDetails)
+        {
+            var existDetail =  _context.OrderDetails
+            .Include(d => d.Order)
+            .FirstOrDefault(d => d.OrderDetailsID == id);
+
+            if(existDetail == null)
+            return NotFound();
+
+            if(id != orderDetails.OrderDetailsID)
+            return NotFound();
+
+            existDetail.Cant =  orderDetails.Cant;
+
+            _context.Update(existDetail);
+            await _context.SaveChangesAsync();
+            
+            return RedirectToAction(nameof(Details), new {id = existDetail.OrderID});
+
+        }
+
+        public async Task<IActionResult> DeleteDetails(int id)
+        {
+            var detail =  await _context.OrderDetails
+            .Include(d => d.Product)
+            .FirstOrDefaultAsync(d => d.OrderDetailsID == id);
+
+            if(detail ==null)
+                return NotFound();
+
+            return View(detail);
+
+        }
+
+        [HttpPost, ActionName("DeleteDetails")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteDetailsConfirmed(int id)
+        {
+            var detail = await _context.OrderDetails.FindAsync(id);
+
+            if(detail == null)
+                return NotFound();
+
+            _context.OrderDetails.Remove(detail);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Details), new {id = detail.OrderID});
+
+        }S
     }
     
     
