@@ -197,7 +197,7 @@ namespace Tienda_CURD.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Details), new {id = detail.OrderID});
 
-        }S
+        }
     }
     
     
