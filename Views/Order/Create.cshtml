@@ -1,12 +1,13 @@
-<!--@{
+@{
     ViewData["Title"] = "Create";
 }
+@model Order
 <div class="form-container">
     <h2>Crear Pedido</h2>
      <form asp-action="Create">
         <div class="form-group">
-          <label asp-for="">Fecha</label>
-            <input type="text">
+            <label asp-for="Date">Fecha</label>
+            <input asp-for="Date" class="form-control" type="date"/>
         </div>
      </form>
-</div> -->
+</div> 
